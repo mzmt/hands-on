@@ -29,22 +29,32 @@ DockerとAWS CLIに関しては、ECRのパブリックレポジトリにビル�
 
 ## 手順
 
-- Railsのサンプルプロジェクトをcloneする
+### Railsのサンプルプロジェクトをcloneする
 
 `git clone git@github.com:mzmt/rails6_docker_template.git`
+
 https://github.com/mzmt/rails6_docker_template
 
-- `docker-compose up`して動くことを確認する
+### `docker-compose up`して動くことを確認する
 動くことが確認できたらctrl + Cで終了
 
-- AWS consoleを開く
+### AWS consoleを開く
 https://console.aws.amazon.com/console/home
 
-- ECRレポジトリを作成する
+### ECRレポジトリを作成する
 
-- 画面上にコマンドが表示されるので実行してECRにpushする
+### 画面上にコマンドが表示されるので実行してECRにpushする
 
-- App Runnerでデプロイ
+### AWS CLIをインストールしていない場合
+ECRのパブリックレポジトリの検索で、「mzmt/rails6_docker_template」と入力するとビルド済みのイメージが使えます
+
+### App Runnerでデプロイ
+ビルド済みのイメージを利用する場合は、プロバイダーに「Amazon ECR パブリック」を選択し、以下のURIを入力する
+public.ecr.aws/d5c5w7d9/mzmt/rails6_docker_template:latest
+
+rails envを設定しないとdevelopmentで立ち上がってしまうので注意
+RAILS_ENV: production
+その他はデフォルトの設定でok
 
 ## もしデプロイが失敗した場合
 
